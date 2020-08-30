@@ -1,0 +1,1 @@
+dx.lang = "en" -- the default language of all modules (this can be changed client side)

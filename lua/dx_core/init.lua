@@ -1,4 +1,6 @@
-dx.IncludeCL("cl_hud.lua")
+dx.includeCL("cl_hud.lua")
+dx.includeSH("config.lua")
+dx.includeSH("sh_lang.lua")
 
 -- module loading
 --[[
@@ -37,6 +39,6 @@ end
 local folder = "dx_core/modules"
 local files = file.Find(folder .. "/" .. "*.lua", "LUA")
 for _, file in ipairs(files) do
-    local mod = dx.IncludeSH(folder .. "/" .. file)
+    local mod = dx.includeSH(folder .. "/" .. file)
     _addModule(mod)
 end
