@@ -15,9 +15,13 @@ local function _addLangPack(pack, key)
     table.Merge(phrases[key], pack)
 end
 
+function dx.addPhrase(key, phrase, lang) -- manually adds single phrases, useful for phrases that can be user defined
+    _addLangPack({key = phrase}, lang)
+end
+
 function dx.phrase(key)
     if CLIENT then
-        return phrases[_curLang()][key] or key
+        return phrases[_curLang()][key] or phrases[dx.lang][key] or key
     else
         return phrases[dx.lang][key] or key
     end
@@ -30,10 +34,11 @@ if CLIENT then
     end
 
     local function _curLang()
+        if dx.forcelang then return dx.lang end
         return file.Read("dexterity/lang.txt")
     end
 
-    function dx.setlang(key)
+    function dx.setLang(key)
         if not phrases[key] then return end
         file.Write("dexterity/lang.txt", key)
     end

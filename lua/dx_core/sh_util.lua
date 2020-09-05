@@ -4,7 +4,7 @@ function dx.includeCL(path)
     if SERVER then
         AddCSLuaFile(path)
     else 
-        include(path) 
+        return include(path) 
     end
 end
 
@@ -12,12 +12,12 @@ function dx.includeSH(path)
     if SERVER then
         AddCSLuaFile(path)
     end
-    include(path) 
+    return include(path) 
 end
 
 function dx.includeSV(path)
     if SERVER then
-        include(path)
+        return include(path)
     end
 end
 
